@@ -1,8 +1,12 @@
+const dotenv = require('dotenv');
+dotenv.config();
 const express = require('express');
+const path = require('path')
 const app = express();
 const port = process.env.PORT || 8200;
 const mongoose = require('mongoose');
-const mongoURI = 'mongodb://localhost:27017';
+const mongoURI = process.env.DB;
+console.log(mongoURI);
 var cors = require('cors')
 
 app.use(cors())
@@ -20,7 +24,7 @@ mongoose
 
 const Question = require('./models/Questions');
 
-app.post('/api/questions', async (req, res) => {
+app.post(`/api/questions`, async (req, res) => {
   try {
     const { title, answer, description, category } = req.body;
     const question = new Question({ title, answer, description, category });
@@ -31,7 +35,7 @@ app.post('/api/questions', async (req, res) => {
   }
 });
 
-app.get('/api/', async (req, res) => {
+app.get(`/api/`, async (req, res) => {
     try {
       const questions = await Question.find();
       res.json(questions);
@@ -41,7 +45,14 @@ app.get('/api/', async (req, res) => {
   });
   
   
-// Your API routes will go here
+
+if(process.env.STATUS === 'prod'){
+  app.use(express.static(path.join(__dirname, '../frontend/build')));
+  app.get('*', (req, res)=>{
+    res.sendFile(path.resolve(__dirname, '../frontend/build/index.html'))
+  })
+}
+
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
