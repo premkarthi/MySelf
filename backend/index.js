@@ -3,7 +3,7 @@ dotenv.config();
 const express = require('express');
 const path = require('path')
 const app = express();
-const port = process.env.DEV_PORT || 8200;
+const port = process.env.DEV_PORT || 3100;
 const mongoose = require('mongoose');
 const mongoURI = 'mongodb+srv://Premkarz:IncrqG3HmpCZqylF@myself.k6xjgsg.mongodb.net/';
 console.log(mongoURI);
