@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './styes.scss'
 const Javascript = () => {
-    
+
    const [data, setData] = useState([])
 
 
@@ -46,12 +46,14 @@ const Javascript = () => {
   const handleChange = (e) => {
     setQuestion({ ...question, [e.target.name]: e.target.value });
   };
-
+  const BaseURL = 'http://16.171.165.191:8100/' 
+  // http://127.0.0.1:8200
+  
   useEffect(() => {
     // Fetch questions from the backend API
     const fetchQuestions = async () => {
       try {
-        const response = await axios.get('http://127.0.0.1:8200/api/');
+        const response = await axios.get(`${BaseURL}/api/`);
         setData(response.data);
       } catch (error) {
         console.error('Error fetching questions:', error);
@@ -66,7 +68,7 @@ const Javascript = () => {
 
     if (validateForm()) {
       try {
-        await axios.post('http://127.0.0.1:8200/api/questions', question);
+        await axios.post(`${BaseURL}/api/questions`, question);
         console.log('Question submitted successfully');
         setQuestion({ title: '', answer: '', description: '', category:''});
         setErrors({});
