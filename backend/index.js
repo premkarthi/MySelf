@@ -5,7 +5,7 @@ const path = require('path')
 const app = express();
 const port = process.env.DEV_PORT || 8200;
 const mongoose = require('mongoose');
-const mongoURI = process.env.DB;
+const mongoURI = 'mongodb+srv://Premkarz:IncrqG3HmpCZqylF@myself.k6xjgsg.mongodb.net/';
 console.log(mongoURI);
 var cors = require('cors')
 
