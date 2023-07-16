@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&display=swap');
+
+*{
+  margin: 0px;
+  padding: 0px;
+  list-style: none;
+  text-decoration: none;
+  box-sizing: border-box;
+  font-family: 'Jost', sans-serif;
+}
+
+.container{
+    height: 95vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    max-width: 70%;
+    margin: auto;
+    padding: 10px;
+}
+.experienceSection .panelBlock{
+  min-height: 450px;
+}
+@media screen and (max-width:1200px){
+  .container{
+    justify-content: center;
+    max-width: 80%;
+  }
+  .experienceSection .container{
+    justify-content: center;
+    display: flex !important;
+  }
+}
+@media screen and (max-width:900px){
+  .container{
+    max-width: 100%;
+    height: auto;
+    min-height: 100vh;
+    padding: 20px;
+  }
+  .experienceSection .container{
+    display: block !important;
+  }
+}
+
+.dark-mode{
+  background: #000000;
+  color: #fff;
+}
+
+.dark-mode input , .dark-mode textarea{
+  background: transparent !important;
+  color: #ffffff !important;
+}
+
+.dark-mode .workedBrands ul{
+  background: #ffffff;
+}
