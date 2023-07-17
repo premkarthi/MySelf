@@ -2,10 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './styes.scss'
 const Javascript = () => {
-
-   const [data, setData] = useState([])
-
-
+  const [data, setData] = useState([])
   const [question, setQuestion] = useState({
     title: '',
     answer: '',
@@ -46,7 +43,7 @@ const Javascript = () => {
   const handleChange = (e) => {
     setQuestion({ ...question, [e.target.name]: e.target.value });
   };
-  const BaseURL = 'http://16.171.165.191:8100/' 
+  const BaseURL = 'http://16.171.165.191:8100' 
   // http://127.0.0.1:8200
   
   useEffect(() => {
@@ -134,7 +131,7 @@ const Javascript = () => {
 
       <div>
       <h1>Questions</h1>
-      {data.map((question, key) => (
+      {data.length > 0 && data.map((question, key) => (
         <div key={question._id} className="item">
           <h3 className='question'>{key+1}.{question.title}</h3>
           <div className='answers'>
